@@ -22,8 +22,31 @@ cabal.project.local~
 .HTF/
 .ghc.environment.*
 
+# C++
+*.d
+*.slo
+*.lo
+*.o
+*.obj
+*.gch
+*.pch
+*.so
+*.dylib
+*.dll
+*.mod
+*.smod
+*.lai
+*.la
+*.a
+*.lib
+*.exe
+*.out
+*.app
+*.dSYM
+
 # Compiled
 haskell_solution
+cpp_solution
 
 # macOS
 .DS_Store
