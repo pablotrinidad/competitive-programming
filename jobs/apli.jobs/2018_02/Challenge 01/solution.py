@@ -1,4 +1,5 @@
-"""
+"""Closes Neighbor.
+
 Have the function ClosestNeighbour(strArr) read the matrix of numbers stored in strArr which
 will be a 2D matrix that contains only the integers 1, 0, or 2.
 Then from the position in the matrix where a 1 is, return the number of spaces either left,
@@ -22,7 +23,34 @@ same in all rows.
 """
 
 
-def ClosestNeighbour(strArr):
-    # Your code goes here
-    return None
+def closest_neighbor(m):
+    """Closest neighbor."""
+    if sum([len(x) for x in m]) != len(m) ** 2:
+        return 0
 
+    s = len(m)
+    twos = []
+    one = ()
+
+    # Scan map
+    for i in range(s):
+        for j in range(s):
+            if int(m[i][j]) == 2:
+                twos.append((i, j))
+            elif int(m[i][j]) == 1:
+                one = (i, j)
+
+    # No enemies found
+    if not twos:
+        return 0
+
+    # Compute distances
+    shortest_route = 2 * s
+    for t in twos:
+        dx = 1 if abs(t[0] - one[0]) == (s - 1) else abs(t[0] - one[0])
+        dy = 1 if abs(t[1] - one[1]) == (s - 1) else abs(t[1] - one[1])
+        d = dx + dy
+        if d < shortest_route:
+            shortest_route = d
+
+    return shortest_route
