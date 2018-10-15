@@ -131,3 +131,5 @@ dmypy.json
 *.tar.gz
 *.rar
 hs_err_pid*
+
+solution
