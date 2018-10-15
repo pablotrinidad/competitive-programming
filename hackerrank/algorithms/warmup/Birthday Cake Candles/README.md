@@ -4,3 +4,5 @@
 * **Solved in:**
     * `C++`
     * `Haskell`
+    * `Python 3`
+    * `Java 8`
