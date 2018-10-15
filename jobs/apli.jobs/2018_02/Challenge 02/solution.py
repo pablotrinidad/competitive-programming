@@ -1,4 +1,5 @@
-"""
+"""Kaprekar's Constant.
+
 Have the function KaprekarsConstant(num) take the num parameter being passed which will be a
 4-digit number with at least two distinct digits.
 Your program should perform the following routine on the number:
@@ -17,6 +18,14 @@ For example: if num is 3524 your program should return 3 because of the followin
 """
 
 
-def KaprekarsConstant(num):
-    return None
+def kaprekars_constant(n):
+    """Kaprekar's constant."""
+    if n == 6174:
+        return 1
 
+    n = str(n).zfill(4)
+    g = ''.join(sorted(n)[::-1])
+    l = ''.join(sorted(n))
+    n = int(g) - int(l)
+
+    return 1 + kaprekars_constant(n) if n != 6174 else 1
