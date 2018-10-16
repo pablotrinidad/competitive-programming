@@ -133,3 +133,5 @@ dmypy.json
 hs_err_pid*
 
 solution
+declarative
+recursive
