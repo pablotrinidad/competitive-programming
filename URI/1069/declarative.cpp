@@ -2,19 +2,10 @@
 using namespace std;
 
 int diamonds(string s) {
-    int o = -1, c = -1;
-    int d = 0, i = 0;
-    while (i < s.length() && s.length() > 1) {
-        if (s[i] == '<') { o = i; }
-        else if (s[i] == '>' && o != -1) { c = i; }
-
-        if (c != -1 && o != -1) {
-            s = s.substr(0, o) + s.substr(c + 1, s.length() - 1);
-            d += 1; i = 0;
-            o = -1; c = -1;
-        } else {
-            i += 1;
-        }
+    int o = 0; int d = 0;
+    for (int i = 0; i < s.length(); ++i) {
+        if (s[i] == '<') { o += 1; }
+        else if (s[i] == '>' && o > 0) { d += 1; o -= 1; }
     }
     return d;
 }
