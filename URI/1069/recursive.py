@@ -1,19 +1,16 @@
 """Diamonds extractor."""
 
 
-def f(s, i=0, o=None, c=None):
+def f(s, o=0):
     """Diamonds extractor."""
-    if i >= len(s):
+    if len(s) == 0:
         return 0
-    if s[i] == '<':
-        o = i
-    elif s[i] == '>' and o is not None:
-        c = i
-
-    if o is not None and c is not None:
-        return 1 + f(s[0:o] + s[c + 1:], i=0, o=None, c=None)
+    elif s[0] == '<':
+        return f(s[1:], o + 1)
+    elif s[0] == '>' and o > 0:
+        return 1 + f(s[1:], o - 1)
     else:
-        return f(s, i+1, o, c)
+        return 0
 
 if __name__ == '__main__':
     n = int(input())

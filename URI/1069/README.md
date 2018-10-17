@@ -4,7 +4,7 @@
 * **Solved in:**
     * `Python`
         * `Recursive` **0.224s**
-        * `Declarative` **0.184s**
+        * `Imperative` **0.184s**
     * `C++`
         * `Recursive` **0.076s**
-        * `Declarative` **0.028s**
+        * `Imperative` **0.028s**
