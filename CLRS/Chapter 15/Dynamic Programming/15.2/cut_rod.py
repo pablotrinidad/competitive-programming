@@ -1,7 +1,10 @@
-"""Cur rod.
+"""Rod cutting.
 
 Recursive top-down implementation.
 """
+
+import cProfile
+from random import randint
 
 
 def cut_rod(p, n):
@@ -19,9 +22,32 @@ def cut_rod(p, n):
     return q
 
 
-p = [1, 5, 8, 9, 10, 17, 17, 20, 24, 30]  # Figure 15.1
+def cut_rod2(p, n, r={}):
+    """Cut rod.
 
-for i in range(1, 11):
-    print("Test cur_rod for n=" + str(i))
-    r = cut_rod(p, i)
-    print("\t", r)
+    Same functionality as the original but implemented
+    as a top-down with memoization.
+    """
+    q = r.get(n, None)
+    if q:
+        return q
+    else:
+        if n == 0:
+            return 0
+        else:
+            q = 0
+            for i in range(n):
+                q = max(q, p[i] + cut_rod2(p, n - (i + 1), r))
+            r[n] = q
+            return q
+
+
+def test_algorithms(n):
+    """Test algorithms with n-sized problems."""
+    p = [randint(1, 50) for _ in range(n)]
+    for i in range(1, n+1):
+        print('\n\n', '=' * 20, 'N:', i, '=' * 20)
+        cProfile.runctx('cut_rod2(p, i)', globals(), locals())
+        cProfile.runctx('cut_rod(p, i)', globals(), locals())
+
+test_algorithms(25)
