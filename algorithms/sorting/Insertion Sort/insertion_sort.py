@@ -16,7 +16,7 @@ def sort(A):
 import random  # NOQA
 
 A = random.choices(range(1, 16), k=10)
-print(A)
+print("Unsorted:\t", A)
 
 A = sort(A)
-print(A)
+print("Sorted:\t\t", A)
