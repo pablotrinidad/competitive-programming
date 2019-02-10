@@ -1,6 +1,6 @@
 # Greatest Common Divisor
 
-Problem description: [https://www.interviewbit.com/problems/numbers-of-length-n-and-value-less-than-k/](https://www.interviewbit.com/problems/numbers-of-length-n-and-value-less-than-k/)
+Problem description: [https://www.interviewbit.com/problems/greatest-common-divisor/](https://www.interviewbit.com/problems/greatest-common-divisor/)
 
 
 Solved in:
