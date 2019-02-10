@@ -4,3 +4,4 @@
 
 Solved in:
  * `Python`
+ * `Haskell`
