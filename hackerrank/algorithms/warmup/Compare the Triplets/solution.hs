@@ -11,6 +11,7 @@ compareTriplets (x:xs) (y:ys) (a, b)
     | x > y = compareTriplets xs ys (succ a, b)
     | otherwise = compareTriplets xs ys (a, b)
 
+
 -- Handle input
 main :: IO()
 main = do
