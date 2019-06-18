@@ -6,3 +6,4 @@ Problem description: [https://www.interviewbit.com/problems/wave-array/](https:/
 Solved in:
 
  * **`Python`**
+ * **`Go`**
