@@ -6,3 +6,4 @@ Problem description: [https://www.interviewbit.com/problems/min-steps-in-infinit
 Solved in:
 
  * **`Python`**
+ * **`Go`**
