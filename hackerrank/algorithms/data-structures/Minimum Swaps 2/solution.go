@@ -4,57 +4,32 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"math"
 	"os"
 	"strconv"
 	"strings"
 )
 
-func computeDistances(arr []int32) (distances map[int]int) {
-	distances = make(map[int]int)
-	for i := range arr {
-		distances[i] = int(math.Abs(float64(i+1) - float64(arr[i])))
-	}
-	return distances
-}
-
-func getOptimumSwap(distances map[int]int, arr []int32) (pair []int) {
-	indexes := []int{}
-	// Use only numbers out of position, i.e.: distance to position is not 0
-	for k, v := range distances {
-		if v > 0 {
-			indexes = append(indexes, k)
-		}
-	}
-
-	// Compute combinations len(indexes) on 2: O(n^2)
-	minSoFar := len(arr) * 2
-	for i, IthIndex := range indexes {
-		for j := i + 1; j < len(indexes); j++ {
-			JthIndex := indexes[j]
-			currentDistance := distances[IthIndex] + distances[JthIndex]
-			distanceAfterSwap := (int(math.Abs(float64(JthIndex+1)-float64(arr[IthIndex]))) +
-				int(math.Abs(float64(IthIndex+1)-float64(arr[JthIndex]))))
-			if distanceAfterSwap-currentDistance <= minSoFar {
-				minSoFar = distanceAfterSwap - currentDistance
-				pair = []int{IthIndex, JthIndex}
-			}
-		}
-	}
-	return pair
-}
-
 // Complete the minimumSwaps function below.
 func minimumSwaps(arr []int32) (swaps int32) {
-	distances := computeDistances(arr)
-	pair := getOptimumSwap(distances, arr)
-	for len(pair) == 2 {
-		arr[pair[0]], arr[pair[1]] = arr[pair[1]], arr[pair[0]]
-		distances = computeDistances(arr)
-		pair = getOptimumSwap(distances, arr)
-		swaps++
+	// Locate each integer in the current slice
+	currentLocations := make([]int, len(arr))
+	for i, x := range arr {
+		currentLocations[x-1] = i
 	}
-	return swaps
+
+	// Sort arr by pushing numbers into a
+	for i, x := range arr {
+		if int(x) != i+1 {
+			swaps++
+			arr[i] = int32(i + 1)
+			// Perform "swap" with the ith element
+			arr[currentLocations[i]] = x
+			// Update the location of the out of position number to were ith was
+			currentLocations[x-1] = currentLocations[i]
+		}
+	}
+
+	return
 }
 
 func main() {
