@@ -4,4 +4,4 @@ URL: [https://www.hackerrank.com/challenges/minimum-swaps-2/problem](https://www
 
 Solved in:
 
- * `Python`
+ * `Go`
